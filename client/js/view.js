@@ -6,10 +6,10 @@ function initializeView(grid) {
   canvas.height = grid.height * SIZE;
   let context = canvas.getContext("2d");
   drawBloc(grid, context);
-  window.setInterval(drawBloc, 500, grid, context);
+  // window.setInterval(drawBloc, 500, grid, context);
 }
 function drawBloc(grid, context) {
-  context.clearRect(0, 0, gird.width * SIZE, grid.height * SIZE);
+  context.clearRect(0, 0, grid.width * SIZE, grid.height * SIZE);
   let cells = grid.bloc.cells[grid.orientation];
   for (let i = 0; i < cells.length; i++) {
     // On parcourt les lignes de chaque objet
@@ -28,4 +28,5 @@ function drawBloc(grid, context) {
       }
     }
   }
+  window.requestAnimationFrame(() => drawBloc(grid, context));
 }

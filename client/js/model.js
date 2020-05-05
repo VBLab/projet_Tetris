@@ -1,13 +1,13 @@
 function initializeModel(grid) {
   grid.cells = [];
-  grid.widht = 12;
+  grid.width = 12;
   grid.height = 18;
   grid.bloc = null;
   grid.orientation = -1;
   grid.x = -1;
   grid.y = -1;
   chooseBloc(grid);
-  window.setInterval(update, 500, grid);
+  window.setInterval(update, 100, grid);
 }
 
 function chooseBloc(grid) {
@@ -20,6 +20,8 @@ function chooseBloc(grid) {
   grid.x = grid.width / 2 - 1;
   grid.y = 0;
 }
-function update (grid) {
-  grid.y++;
+function update(grid) {
+  if (grid.y < grid.height - grid.bloc.cells[grid.orientation].length) {
+    grid.y++;
+  }
 }
