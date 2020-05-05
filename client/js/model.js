@@ -8,7 +8,7 @@ function initializeModel(grid) {
   grid.y = -1;
   initializeGrid(grid);
   chooseBloc(grid);
-  window.setInterval(update, 100, grid);
+  window.setInterval(update,250, grid);
 }
 function initializeGrid(grid) {
   for (let i = 0; i < grid.height; i++) {
