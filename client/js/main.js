@@ -1,6 +1,7 @@
 const BLOCS = {
   1: {
     // bloc Z
+    id : 1,
     cells: [
       [
         [true, true, false],
@@ -16,6 +17,7 @@ const BLOCS = {
   },
   2: {
     // bloc T
+    id : 2,
     cells: [
       [
         [true, true, true],
@@ -40,6 +42,7 @@ const BLOCS = {
   },
   3: {
     //BLOCK_L
+    id : 3,
     cells: [
       [
         [true, false],
