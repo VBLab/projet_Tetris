@@ -30,3 +30,15 @@ A FAIRE ABSOLUEMENT
 
 LES DIFFERENTES TACHES
 - 
+LES BLOCS
+
+const BLOC_I_rot ={
+    cells: [[true],[true],[true],[true]]
+};
+const BLOC_T ={
+    [[true,true,true],
+    [false, true,false]]
+}
+const BLOC_T_rot2 ={
+    cells:[false, true, true]
+}
