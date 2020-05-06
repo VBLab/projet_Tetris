@@ -1,4 +1,3 @@
-
 //préparation du jeux//
 function initializeModel(grid) {
   grid.cells = [];
@@ -10,7 +9,7 @@ function initializeModel(grid) {
   grid.y = -1;
   initializeGrid(grid);
   chooseBloc(grid);
-  window.setInterval(update, 250, grid);
+  window.setInterval(update, 500, grid);
 }
 function initializeGrid(grid) {
   for (let i = 0; i < grid.height; i++) {
@@ -20,8 +19,8 @@ function initializeGrid(grid) {
     }
   }
 }
- // choisi un bloc de manière aléatoire//
- //  NB : on veut récupérer l'index du bloc donc BLOCS[]
+// choisi un bloc de manière aléatoire//
+//  NB : on veut récupérer l'index du bloc donc BLOCS[]
 function chooseBloc(grid) {
   grid.bloc = BLOCS[Math.floor(Math.random() * Object.keys(BLOCS).length) + 1];
   // la fonction Math.random retourne un nombre entre 0 et 1
@@ -56,6 +55,7 @@ function update(grid) {
     grid.y++;
   } else {
     stockBloc(grid);
+    checkFullLine(grid);
     chooseBloc(grid);
   }
 }
@@ -84,29 +84,29 @@ function stockBloc(grid) {
     }
   }
 }
-// ligne pleine//si elle est pleine supprime...
+// ligne pleine//si elle est pleine --> supprime...
 function checkFullLine(grid) {
   for (let i = 0; i < grid.cells.length; i++) {
-        let res = true;
-        for (let j = 0; j < grid.cells[i].length; j++) {
-          if (grid.cells[i][j] == 0) {
-              res = false;
-          }
-        }
-        if (res) {
-          //supprime// j'enlève tout, en faisant descendre tout le reste.
-          deleteLine(grid, i);
-        }
+    let res = true;
+    for (let j = 0; j < grid.cells[i].length; j++) {
+      if (grid.cells[i][j] == 0) {
+        res = false;
+      }
     }
-}
-// fonction supprimer la ligne//
-function deleteLine(grid,y) {
-  for (let i = 0; i < y ; i++) {
-    for (let j = 0; j <grid.cells[y].length; j++){
-        grid.cells[y-i][j] = grid.cells[y - i -1][j];
+    if (res) {
+      //supprime = j'enlève tout, en faisant descendre tout le reste.
+      deleteLine(grid, i);
     }
   }
-  for (let j = 0; j <grid.cells[y].length; j++){
+}
+// fonction supprimer la ligne//
+function deleteLine(grid, y) {
+  for (let i = 0; i < y; i++) {
+    for (let j = 0; j < grid.cells[y].length; j++) {
+      grid.cells[y - i][j] = grid.cells[y - i - 1][j];
+    }
+  }
+  for (let j = 0; j < grid.cells[y].length; j++) {
     grid.cells[0][j] = 0;
   }
 }
