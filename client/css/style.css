@@ -1,14 +1,21 @@
 body {
-    text-align: center;
-    margin: 0;
-    /* n'affiche pas d'ascensseur */
-    overflow: hidden; 
-    background-color: olive;
+  text-align: center;
+  margin: 0;
+  /* V n'affiche pas d'ascensseur */
+  overflow: hidden;
+  background-color: olive;
 }
-canvas { 
-    background-color : lightslategrey;
-    height:100vh;
+canvas {
+  background-color: lightslategrey;
+  height: 100vh;
 }
-/* screen {
-    text-align: 
-} */
+.screen {
+  background-color: slategray;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 400px;
+  height: 200px;
+  border: 3px solid #5c0e2d;
+  text-shadow: 1px 1px 2px #5c0e2d;
+}

@@ -1,3 +1,4 @@
+// mise à jour du jeux//comment le joueur agit sur le modèle//
 function initializeController(grid) {
   window.onkeydown = (event) => {
     // j'écoute les touche du clavier, si elle sont utilisées, je lance ces fonctions//

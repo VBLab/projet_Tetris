@@ -1,4 +1,4 @@
-//préparation du jeux//
+//préparation du jeux// à la base de tout...
 function initializeModel(grid) {
   grid.cells = [];//selectionne le bloc selon son index
   grid.width = 12;
@@ -9,7 +9,7 @@ function initializeModel(grid) {
   grid.y = -1;
   initializeGrid(grid);
   chooseBloc(grid);
-  window.setInterval(update, 500, grid);
+  grid.interval = window.setInterval(update, 500, grid);
 }
 function initializeGrid(grid) {// tableau (grille) de 12*18, rempli de zéro//
   for (let i = 0; i < grid.height; i++) {//les lignes
@@ -53,7 +53,11 @@ function update(grid) {
     blocCanGoThere(grid, grid.x, grid.y + 1)
   ) {
     grid.y++;
-  } else {
+  } 
+  else if (grid.y ==0){    //arrête le jeu, quand plus d'epace en haut de la grille//
+    window.clearInterval(grid.interval);
+  }
+  else {
     stockBloc(grid);//1-stock la pièce sur la ligne
     checkFullLine(grid);//2-vérifier si la ligne est pleine
     chooseBloc(grid);//3-choisir une nouvelle pièce

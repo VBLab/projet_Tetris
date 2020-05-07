@@ -75,16 +75,14 @@ const BLOCS = {
         [true, true],
       ],
     ],
-    color :"black",
+    color: "#baae8c",
   },
   5: {
-    //BLOCK_T
-    id:5,
-    cells: [
-      [[true],[true],[true],[true]], [[true, true, true,true]]
-    ],
-    color: "orange",
-  }
+    //BLOCK_L
+    id: 5,
+    cells: [[[true], [true], [true], [true]], [[true, true, true, true]]],
+    color: "#ba918c",
+  },
 };
 let grid = {};
 initializeModel(grid);
