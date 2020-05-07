@@ -1,6 +1,6 @@
 function initializeController(grid) {
   window.onkeydown = (event) => {
-    // console.log(event.code);
+    // j'écoute les touche du clavier, si elle sont utilisées, je lance ces fonctions//
     let code = event.code;
     switch (code) {
       case "ArrowUp": //rotation - sur la flèche du haut//
@@ -11,7 +11,7 @@ function initializeController(grid) {
         incX(grid);
         break;
 
-      case "ArrowDown": //descendre//
+      case "ArrowDown": //descendre + vite//
         update(grid);
         break;
 

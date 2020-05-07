@@ -12,7 +12,8 @@ function draw(grid, context) {
   context.clearRect(0, 0, grid.width * SIZE, grid.height * SIZE);
   drawGrid(grid, context);
   drawBloc(grid, context);
-  window.requestAnimationFrame(() => draw(grid, context));
+  window.requestAnimationFrame(() => draw(grid, context));// quand le nav est prêt, on redessine la grille
+  //=refreash de la vue, dès que les ressources le permettent//
 }
 function drawCell(context, x, y, color) {
   context.fillStyle = color;
@@ -28,15 +29,6 @@ function drawBloc(grid, context) {
       // On parcourt les colonnes de chaque ligne
       if (cells[i][j]) {
         drawCell(context, grid.x + j, grid.y + i, grid.bloc.color);
-        //         context.fillStyle = grid.bloc.color;
-        //         context.fillRect((grid.x + j) * SIZE, (grid.y + i) * SIZE, SIZE, SIZE);
-        //         context.strokeStyle = "black"; //contour des carreaux//
-        //         context.strokeRect(
-        //           (grid.x + j) * SIZE,
-        //           (grid.y + i) * SIZE,
-        //           SIZE,
-        //           SIZE
-        //         );
       }
     }
   }
@@ -48,10 +40,7 @@ function drawGrid(grid, context) {
       let cell = grid.cells[i][j];
       if (cell > 0) {
         drawCell(context, j, i, BLOCS[cell].color);
-        // context.fillStyle = BLOCS[cell].color;
-        // context.fillRect(j * SIZE, i * SIZE, SIZE, SIZE);
-        // context.strokeStyle = "black"; //contour des carreaux//
-        // context.strokeRect(j * SIZE, i * SIZE, SIZE, SIZE);
+        
       }
     }
   }

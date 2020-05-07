@@ -1,13 +1,14 @@
 body {
     text-align: center;
     margin: 0;
-    overflow: hidden;
+    /* n'affiche pas d'ascensseur */
+    overflow: hidden; 
     background-color: olive;
 }
 canvas { 
     background-color : lightslategrey;
     height:100vh;
 }
-screen {
-    
-}
+/* screen {
+    text-align: 
+} */

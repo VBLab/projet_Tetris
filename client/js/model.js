@@ -1,6 +1,6 @@
 //préparation du jeux//
 function initializeModel(grid) {
-  grid.cells = [];
+  grid.cells = [];//selectionne le bloc selon son index
   grid.width = 12;
   grid.height = 18;
   grid.bloc = null;
@@ -11,10 +11,10 @@ function initializeModel(grid) {
   chooseBloc(grid);
   window.setInterval(update, 500, grid);
 }
-function initializeGrid(grid) {
-  for (let i = 0; i < grid.height; i++) {
+function initializeGrid(grid) {// tableau (grille) de 12*18, rempli de zéro//
+  for (let i = 0; i < grid.height; i++) {//les lignes
     grid.cells[i] = [];
-    for (let j = 0; j < grid.width; j++) {
+    for (let j = 0; j < grid.width; j++) {//et ensuite les colonnes
       grid.cells[i][j] = 0;
     }
   }
@@ -26,8 +26,8 @@ function chooseBloc(grid) {
   // la fonction Math.random retourne un nombre entre 0 et 1
   // Math.random retourne un nombre entier entre 0 et 1, alors qu'on veut un bloc dont l'index est compris entre 1 et 4 donc +1
   grid.orientation = Math.floor(Math.random() * grid.bloc.cells.length);
-  grid.x = grid.width / 2 - 1;
-  grid.y = 0;
+  grid.x = grid.width / 2 - 1;//je place le bloc au milieu
+  grid.y = 0;                 // et tout en haut
 }
 // utilisation des touches du clavier pour se déplacer//
 function incOrientation(grid) {
@@ -38,7 +38,7 @@ function decX(grid) {
     grid.x--;
   }
 }
-function incX(grid) {
+function incX(grid) {//si tu peux  aller ok, si non fait rien, donc pas de else.//
   if (
     grid.x < grid.width - grid.bloc.cells[grid.orientation][0].length &&
     blocCanGoThere(grid, grid.x + 1, grid.y)
@@ -46,7 +46,7 @@ function incX(grid) {
     grid.x++;
   }
 }
-// mise à jour de la grille//
+// mise à jour de la grille//= fonction maitresse du jeu
 function update(grid) {
   if (
     grid.y < grid.height - grid.bloc.cells[grid.orientation].length &&
@@ -54,12 +54,12 @@ function update(grid) {
   ) {
     grid.y++;
   } else {
-    stockBloc(grid);
-    checkFullLine(grid);
-    chooseBloc(grid);
+    stockBloc(grid);//1-stock la pièce sur la ligne
+    checkFullLine(grid);//2-vérifier si la ligne est pleine
+    chooseBloc(grid);//3-choisir une nouvelle pièce
   }
 }
-// gestion des collisions//
+// gestion des collisions//dit simplement si le bloc peut aller en x et en y.
 function blocCanGoThere(grid, x, y) {
   let cells = grid.bloc.cells[grid.orientation];
   let res = true;
@@ -84,7 +84,8 @@ function stockBloc(grid) {
     }
   }
 }
-// ligne pleine//si elle est pleine --> supprime...
+// Vérifie si une ligne est pleine//si elle est pleine --> supprime...
+//si non, fait rien du tout, donc pas de else//
 function checkFullLine(grid) {
   for (let i = 0; i < grid.cells.length; i++) {
     let res = true;
